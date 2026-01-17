@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "start": "concurrently -n \"db,dev\" -c \"blue,green\" \"bun db:start\" \"bun dev\"",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky",
@@ -28,6 +29,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.17",
     "@types/node": "^22",
+    "concurrently": "^9.2.1",
     "drizzle-kit": "^0.31.8",
     "drizzle-orm": "^0.45.0",
     "eslint": "^9.39.1",
