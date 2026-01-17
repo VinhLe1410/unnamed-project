@@ -6,7 +6,7 @@
   import { resolve } from '$app/paths';
   import { authClient } from '$lib/auth-client';
   import { Button } from '$lib/components/ui/button';
-  import { LogIn, LogOut, UserPlus } from '@lucide/svelte';
+  import { LogIn, LogOut } from '@lucide/svelte';
   import { getUser } from './user.remote';
 
   let { children } = $props();
@@ -18,7 +18,7 @@
       fetchOptions: {
         onSuccess: async () => {
           getUser().refresh();
-          goto(resolve('/auth/login'));
+          goto(resolve('/'));
         },
       },
     });
@@ -28,23 +28,26 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <header class="border-b bg-background">
-  <div class="container mx-auto flex h-14 items-center justify-center gap-4 px-4">
-    {#if !user.id}
-      <Button variant="ghost" href="/auth/login">
-        <LogIn class="size-4" />
-        Login
-      </Button>
-    {/if}
-    <Button variant="ghost" href="/auth/signup">
-      <UserPlus class="size-4" />
-      Sign Up
-    </Button>
-    {#if user.id}
-      <Button variant="ghost" onclick={handleLogout}>
-        <LogOut class="size-4" />
-        Logout
-      </Button>
-    {/if}
+  <div class="container mx-auto flex h-14 items-center px-4">
+    <div class="flex-1">
+      {#if user.id}
+        <span class="text-sm font-medium">Welcome {user.username}!</span>
+      {/if}
+    </div>
+    <div class="flex gap-4">
+      {#if !user.id}
+        <Button variant="ghost" href="/auth/login">
+          <LogIn class="size-4" />
+          Login
+        </Button>
+      {/if}
+      {#if user.id}
+        <Button variant="ghost" onclick={handleLogout}>
+          <LogOut class="size-4" />
+          Logout
+        </Button>
+      {/if}
+    </div>
   </div>
 </header>
 
