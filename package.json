@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "start": "concurrently -n \"db,dev\" -c \"blue,green\" \"bun db:start\" \"bun dev\"",
+    "start": "concurrently -n \"db,dev,studio\" -c \"blue,green,yellow\" \"bun db:start\" \"bun dev\" \"bun db:studio\"",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky",
