@@ -20,7 +20,10 @@ export default defineConfig(
   {
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
 
-    rules: {},
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+    },
   },
   {
     files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
