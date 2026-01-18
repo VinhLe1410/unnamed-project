@@ -1,5 +1,17 @@
 {
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+
+  "eslint.useFlatConfig": true,
+
+  "eslint.validate": ["javascript", "typescript", "svelte"],
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+
+  "editor.formatOnSave": true,
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
