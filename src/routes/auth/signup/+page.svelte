@@ -24,6 +24,7 @@
     password?: string;
     passwordConfirm?: string;
   };
+
   let fieldErrors = $state<FieldErrors>({});
   let formError = $state('');
 
