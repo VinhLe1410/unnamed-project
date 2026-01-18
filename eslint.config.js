@@ -18,7 +18,12 @@ export default defineConfig(
   prettier,
   ...svelte.configs.prettier,
   {
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+      parserOptions: {
+        projectService: true,
+      },
+    },
 
     rules: {
       '@typescript-eslint/no-floating-promises': 'error',
