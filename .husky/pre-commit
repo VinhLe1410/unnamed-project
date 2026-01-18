@@ -1,2 +1,1 @@
-bun format
-bun lint
+bun lint-staged
