@@ -13,7 +13,7 @@ const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 export default defineConfig(
   includeIgnoreFile(gitignorePath),
   js.configs.recommended,
-  ...ts.configs.recommended,
+  ...ts.configs.strictTypeChecked,
   ...svelte.configs.recommended,
   prettier,
   ...svelte.configs.prettier,
@@ -33,5 +33,9 @@ export default defineConfig(
         svelteConfig,
       },
     },
+  },
+  {
+    files: ['**/*.js'],
+    ...ts.configs.disableTypeChecked,
   },
 );
