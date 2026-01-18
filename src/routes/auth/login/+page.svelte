@@ -40,8 +40,8 @@
     if (!result.success) {
       const tree = z.treeifyError(result.error);
       fieldErrors = {
-        email: tree.properties?.email?.errors?.[0],
-        password: tree.properties?.password?.errors?.[0],
+        email: tree.properties?.email?.errors[0],
+        password: tree.properties?.password?.errors[0],
       };
       return;
     }
@@ -55,9 +55,9 @@
           password: result.data.password,
         },
         {
-          onSuccess: () => {
-            getUser().refresh();
-            goto(resolve('/dashboard'));
+          onSuccess: async () => {
+            await getUser().refresh();
+            await goto(resolve('/dashboard'));
           },
           onError: (ctx) => {
             formError = ctx.error.message || 'Invalid email or password';
@@ -87,7 +87,9 @@
               type="email"
               placeholder="you@example.com"
               bind:value={email}
-              oninput={() => clearFieldError('email')}
+              oninput={() => {
+                clearFieldError('email');
+              }}
               aria-invalid={!!fieldErrors.email}
               class="pl-9"
             />
@@ -106,7 +108,9 @@
               type="password"
               placeholder="••••••••"
               bind:value={password}
-              oninput={() => clearFieldError('password')}
+              oninput={() => {
+                clearFieldError('password');
+              }}
               aria-invalid={!!fieldErrors.password}
               class="pl-9"
             />

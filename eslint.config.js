@@ -46,4 +46,22 @@ export default defineConfig(
     files: ['**/*.js'],
     ...ts.configs.disableTypeChecked,
   },
+  {
+    files: ['**/components/ui/**/*.svelte'],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+    },
+  },
+  {
+    files: ['**/*.server.ts', '**/+server.ts', '**/hooks.server.ts'],
+    rules: {
+      '@typescript-eslint/only-throw-error': 'off',
+    },
+  },
+  {
+    files: ['**/+layout.svelte'],
+    rules: {
+      '@typescript-eslint/no-unsafe-call': 'off',
+    },
+  },
 );

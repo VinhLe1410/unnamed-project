@@ -13,12 +13,12 @@
 
   const user = $derived(await getUser());
 
-  function handleLogout() {
-    authClient.signOut({
+  async function handleLogout() {
+    await authClient.signOut({
       fetchOptions: {
         onSuccess: async () => {
-          getUser().refresh();
-          goto(resolve('/'));
+          await getUser().refresh();
+          await goto(resolve('/'));
         },
       },
     });

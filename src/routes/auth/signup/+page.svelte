@@ -47,10 +47,10 @@
     if (!result.success) {
       const tree = z.treeifyError(result.error);
       fieldErrors = {
-        email: tree.properties?.email?.errors?.[0],
-        username: tree.properties?.username?.errors?.[0],
-        password: tree.properties?.password?.errors?.[0],
-        passwordConfirm: tree.properties?.passwordConfirm?.errors?.[0],
+        email: tree.properties?.email?.errors[0],
+        username: tree.properties?.username?.errors[0],
+        password: tree.properties?.password?.errors[0],
+        passwordConfirm: tree.properties?.passwordConfirm?.errors[0],
       };
       return;
     }
@@ -65,9 +65,9 @@
           name: result.data.username,
         },
         {
-          onSuccess: () => {
-            getUser().refresh();
-            goto(resolve('/dashboard'));
+          onSuccess: async () => {
+            await getUser().refresh();
+            await goto(resolve('/dashboard'));
           },
           onError: (ctx) => {
             formError = ctx.error.message || 'An error occurred during sign up';
@@ -97,7 +97,9 @@
               type="email"
               placeholder="you@example.com"
               bind:value={email}
-              oninput={() => clearFieldError('email')}
+              oninput={() => {
+                clearFieldError('email');
+              }}
               aria-invalid={!!fieldErrors.email}
               class="pl-9"
             />
@@ -116,7 +118,9 @@
               type="text"
               placeholder="johndoe"
               bind:value={username}
-              oninput={() => clearFieldError('username')}
+              oninput={() => {
+                clearFieldError('username');
+              }}
               aria-invalid={!!fieldErrors.username}
               class="pl-9"
             />
@@ -135,7 +139,9 @@
               type="password"
               placeholder="••••••••"
               bind:value={password}
-              oninput={() => clearFieldError('password')}
+              oninput={() => {
+                clearFieldError('password');
+              }}
               aria-invalid={!!fieldErrors.password}
               class="pl-9"
             />
@@ -154,7 +160,9 @@
               type="password"
               placeholder="••••••••"
               bind:value={passwordConfirm}
-              oninput={() => clearFieldError('passwordConfirm')}
+              oninput={() => {
+                clearFieldError('passwordConfirm');
+              }}
               aria-invalid={!!fieldErrors.passwordConfirm}
               class="pl-9"
             />

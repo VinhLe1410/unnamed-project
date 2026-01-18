@@ -7,7 +7,7 @@ export const getUser = query(async () => {
     headers: event.request.headers,
   });
   return {
-    id: session?.user?.id,
-    username: session?.user?.name,
+    id: session?.user.id,
+    username: session?.user.name,
   };
 });
