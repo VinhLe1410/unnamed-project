@@ -33,6 +33,12 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
+<!-- Gradient blur backdrop -->
+<div
+  class="pointer-events-none fixed top-0 left-0 z-40 h-24 w-full mask-[linear-gradient(to_bottom,black_60%,transparent)]
+         backdrop-blur-md"
+></div>
+
 <!-- Overlay -->
 {#if open}
   <button
