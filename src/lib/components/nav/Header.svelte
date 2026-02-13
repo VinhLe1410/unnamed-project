@@ -49,7 +49,9 @@
 <nav
   class="fixed top-4 left-1/2 z-50 -translate-x-1/2 border border-border bg-card
          transition-all duration-300 ease-out
-         {open ? 'w-72 rounded-2xl p-4 shadow-xl md:w-80' : 'w-44 rounded-3xl px-3 py-2 shadow-lg md:w-48 md:px-5'}"
+         {open
+    ? 'w-[min(calc(100vw-2rem),32rem)] rounded-2xl p-4 shadow-xl'
+    : 'w-[min(calc(100vw-2rem),22rem)] rounded-3xl px-5 py-2 shadow-lg'}"
   aria-label="Navigation"
 >
   <!-- Top row: username + toggle -->
