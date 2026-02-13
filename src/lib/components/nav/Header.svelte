@@ -51,7 +51,7 @@
   </button>
 {/if}
 
-<!-- Nav -->
+<!-- Header navigation card -->
 <nav
   class="fixed top-4 left-1/2 z-50 -translate-x-1/2 border border-border bg-card
          transition-all duration-300 ease-out
