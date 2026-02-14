@@ -42,7 +42,7 @@
       </div>
     {:else}
       <!-- Empty State -->
-      <div class="flex min-h-[400px] flex-col items-center justify-center text-center">
+      <div class="flex min-h-100 flex-col items-center justify-center text-center">
         <div class="rounded-full bg-muted p-6">
           <svg class="size-12 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
