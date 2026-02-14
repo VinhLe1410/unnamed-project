@@ -30,6 +30,7 @@
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.17",
+    "@types/dompurify": "^3.2.0",
     "@types/node": "^22",
     "bits-ui": "^2.15.5",
     "clsx": "^2.1.1",
@@ -61,6 +62,7 @@
     "@magidoc/plugin-svelte-marked": "^6.3.0",
     "@types/marked": "^6.0.0",
     "better-auth": "^1.4.12",
+    "isomorphic-dompurify": "^3.0.0-rc.2",
     "marked": "^17.0.2",
     "postgres": "^3.4.7",
     "zod": "^4.3.5"

@@ -3,6 +3,8 @@
   import { Menu, X } from '@lucide/svelte';
   import { fade } from 'svelte/transition';
 
+  import { publicNavItems, protectedNavItems } from '$lib/constants/paths';
+
   interface Props {
     user: { id?: string; username?: string };
     onlogout?: () => void;
@@ -25,10 +27,7 @@
     }
   }
 
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/dashboard', label: 'Dashboard' },
-  ];
+  const navLinks = $derived(user.id ? [...publicNavItems, ...protectedNavItems] : publicNavItems);
 </script>
 
 <svelte:window onkeydown={handleKeydown} />

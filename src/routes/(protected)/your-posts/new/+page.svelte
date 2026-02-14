@@ -3,6 +3,8 @@
   import { Button } from '$lib/components/ui/button';
   import { Input } from '$lib/components/ui/input';
   import { marked } from 'marked';
+  import DOMPurify from 'isomorphic-dompurify';
+  import { LoaderCircle } from '@lucide/svelte';
 
   let bodyMarkdown = '';
 </script>
@@ -48,8 +50,14 @@
             class="prose prose-sm min-h-[calc(100vh-14rem)] max-w-none overflow-y-auto
                    rounded-md border border-border bg-card px-6 py-4 shadow-xs dark:prose-invert"
           >
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            {@html marked.parse(bodyMarkdown)}
+            {#await marked.parse(bodyMarkdown)}
+              <div class="flex items-center justify-center">
+                <LoaderCircle class="h-4 w-4 animate-spin" />
+              </div>
+            {:then html}
+              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+              {@html DOMPurify.sanitize(html)}
+            {/await}
           </div>
         </div>
       </div>
